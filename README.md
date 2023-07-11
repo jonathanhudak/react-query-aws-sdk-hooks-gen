@@ -70,7 +70,7 @@ export function MyAppTheListsObjects() {
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <App />
+      <MyAppTheListsObjects />
     </QueryClientProvider>
   );
 }
