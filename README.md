@@ -40,7 +40,6 @@ export default (region = "us-west-2") =>
 #### Usage in `src/App.tsx`
 
 ```tsx
-// src/App.tsx
 import { ListObjectsCommandOutput }
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useListObjectsV2 } from "./lib/s3";
