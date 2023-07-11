@@ -1,0 +1,38 @@
+{
+  "name": "aws-sdk-hooks",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "gen:sdkHooks": "ts-node --skipProject ./src/generateSDKClientHooks.ts",
+    "gen:amplify": "npm run gen:sdkHooks AmplifyClient '@aws-sdk/client-amplify'",
+    "gen:s3": "npm run gen:sdkHooks S3Client '@aws-sdk/client-s3'",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@aws-sdk/client-amplify": "^3.363.0",
+    "@aws-sdk/client-s3": "^3.367.0",
+    "@aws-sdk/credential-providers": "^3.363.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "swr": "^2.2.0",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "husky": "^8.0.0"
+  }
+}
