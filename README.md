@@ -64,7 +64,7 @@ export function MyAppTheListsObjects() {
     },
   });
 
-  return <>{isLoading ? <Loader /> : <ListObjects data={data} />}</>;
+  return <>{isLoading ? <p>Loading...<p> : <ListObjects data={data} />}</>;
 }
 
 export default function App() {
