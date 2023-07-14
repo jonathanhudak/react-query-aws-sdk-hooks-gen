@@ -1,3 +1,4 @@
+import React from "react-dom/client";
 import "./App.css";
 import { ListObjectsCommandOutput } from "@aws-sdk/client-s3";
 import { ListAppsCommandOutput } from "@aws-sdk/client-amplify";
@@ -42,7 +43,18 @@ function ListApps({ data }: { data: ListAppsCommandOutput | undefined }) {
     return (
       <ul>
         {data.apps.map((a) => (
-          <li key={a.appArn}>{a.name}</li>
+          <li key={a.appArn}>
+            {typeof a.productionBranch?.branchName === "string" &&
+            typeof a.defaultDomain === "string" ? (
+              <a
+                href={`https://${a.productionBranch.branchName}.${a.defaultDomain}`}
+              >
+                {a.defaultDomain}
+              </a>
+            ) : (
+              a.defaultDomain
+            )}
+          </li>
         ))}
       </ul>
     );
@@ -63,6 +75,8 @@ export default function App() {
   return (
     <>
       <h2>S3 ListObjectsV2</h2>
+      <Buckets />
+
       <h3>Resources</h3>
       <ul>
         <li>
@@ -71,10 +85,10 @@ export default function App() {
           </a>
         </li>
       </ul>
-      <Buckets />
+
+      <hr />
 
       <h2>Amplify ListApps</h2>
-      <h3>Resources</h3>
       <AmplifyApps />
     </>
   );
